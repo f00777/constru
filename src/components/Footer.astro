@@ -1,0 +1,79 @@
+---
+const currentYear = new Date().getFullYear();
+
+const footerServices = [
+  { label: "Galpones Industriales", href: "/servicios" },
+  { label: "Obras Civiles", href: "/servicios" },
+  { label: "Urbanizaciones", href: "/servicios" },
+  { label: "Edificios Corporativos", href: "/servicios" },
+  { label: "Altillos Estructurales", href: "/servicios" },
+  { label: "Nosotros", href: "/nosotros" },
+];
+---
+
+<footer
+  class="bg-surface-container-lowest w-full py-16 px-gutter border-t-4 border-primary-fixed"
+  id="main-footer"
+>
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max mx-auto">
+    <!-- Brand -->
+    <div class="col-span-1 md:col-span-1 flex flex-col gap-4">
+      <div class="font-display-lg text-headline-lg font-bold text-primary-fixed uppercase tracking-tight">
+        CONSTRU
+      </div>
+      <p class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider mt-2">
+        Ingeniería &amp; Arquitectura<br />Industrial
+      </p>
+    </div>
+
+    <!-- Services -->
+    <div class="col-span-1 md:col-span-2">
+      <h4 class="font-label-lg text-label-lg uppercase text-on-surface mb-6 tracking-widest">Servicios</h4>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {footerServices.map((service) => (
+          <li>
+            <a
+              class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200 block"
+              href={service.href}
+            >
+              {service.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="col-span-1">
+      <h4 class="font-label-lg text-label-lg uppercase text-on-surface mb-6 tracking-widest">Contacto</h4>
+      <ul class="space-y-4">
+        <li class="flex items-start gap-3 text-on-surface-variant">
+          <span class="material-symbols-outlined text-[20px] text-primary shrink-0">location_on</span>
+          <span class="font-body-md text-body-md">Av. Industrial 456, Parque Industrial, Santiago</span>
+        </li>
+        <li class="flex items-center gap-3 text-on-surface-variant">
+          <span class="material-symbols-outlined text-[20px] text-primary shrink-0">call</span>
+          <span class="font-body-md text-body-md">+56 2 2345 6789</span>
+        </li>
+        <li class="flex items-center gap-3 text-on-surface-variant">
+          <span class="material-symbols-outlined text-[20px] text-primary shrink-0">mail</span>
+          <a
+            class="font-body-md text-body-md hover:text-primary transition-colors"
+            href="mailto:contacto@constru.cl"
+          >
+            contacto@constru.cl
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div
+    class="max-w-container-max mx-auto mt-16 pt-8 border-t border-surface-container-highest text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-4"
+  >
+    <p class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-widest">
+      © {currentYear} CONSTRU. ALL RIGHTS RESERVED. RELIABILITY BUILT IN STEEL.
+    </p>
+  </div>
+</footer>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html class="dark scroll-smooth" lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>CONSTRU - Portfolio de Proyectos</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#bcc7de",
+                        "surface-container-lowest": "#060e20",
+                        "on-primary-fixed-variant": "#574500",
+                        "surface-variant": "#2d3449",
+                        "on-secondary-fixed": "#111c2d",
+                        "on-error": "#690005",
+                        "tertiary": "#c7f5ff",
+                        "inverse-on-surface": "#283044",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-container": "#aeb9d0",
+                        "tertiary-fixed": "#a0efff",
+                        "surface-container-highest": "#2d3449",
+                        "primary-fixed": "#ffe083",
+                        "on-surface": "#dae2fd",
+                        "primary-container": "#facc15",
+                        "background": "#0b1326",
+                        "secondary-fixed": "#d8e3fb",
+                        "on-surface-variant": "#d1c6ab",
+                        "surface-dim": "#0b1326",
+                        "surface-container-high": "#222a3d",
+                        "tertiary-container": "#33e4ff",
+                        "on-tertiary-fixed": "#001f25",
+                        "surface-tint": "#eec200",
+                        "surface": "#0b1326",
+                        "surface-light": "#f1f5f9",
+                        "on-primary-container": "#6c5700",
+                        "secondary": "#bcc7de",
+                        "primary-fixed-dim": "#eec200",
+                        "on-tertiary-fixed-variant": "#004e59",
+                        "on-secondary": "#263143",
+                        "on-primary": "#3c2f00",
+                        "outline-variant": "#4d4632",
+                        "surface-container-low": "#131b2e",
+                        "inverse-primary": "#735c00",
+                        "error": "#ffb4ab",
+                        "on-background": "#dae2fd",
+                        "danger-red": "#E21E26",
+                        "secondary-container": "#3e495d",
+                        "on-tertiary": "#00363e",
+                        "surface-bright": "#31394d",
+                        "error-container": "#93000a",
+                        "text-white": "#f8fafc",
+                        "tertiary-fixed-dim": "#15daf4",
+                        "on-secondary-fixed-variant": "#3c475a",
+                        "primary": "#ffecb9",
+                        "outline": "#9a9078",
+                        "on-tertiary-container": "#006270",
+                        "on-primary-fixed": "#231b00",
+                        "inverse-surface": "#dae2fd",
+                        "surface-container": "#171f33"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "margin-desktop": "80px",
+                        "margin-mobile": "20px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Barlow Condensed"],
+                        "body-lg": ["Barlow Condensed"],
+                        "label-lg": ["Barlow Condensed"],
+                        "label-sm": ["Barlow Condensed"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "headline-md": ["Barlow Condensed"],
+                        "headline-xl": ["Barlow Condensed"],
+                        "body-md": ["Barlow Condensed"],
+                        "display-lg": ["Barlow Condensed"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["20px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-lg": ["14px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Barlow Condensed', sans-serif;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 0.9;
+        }
+
+        .project-card:hover .project-info {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .filter-btn.active {
+            background-color: theme('colors.primary-container');
+            color: theme('colors.on-primary-container');
+            border-color: theme('colors.primary-container');
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-background min-h-screen flex flex-col pt-[88px]">
+    <!-- Navigation Bar -->
+    <header
+        class="fixed top-0 w-full z-50 bg-background/90 dark:bg-background/90 backdrop-blur-md border-b border-primary dark:border-primary-fixed">
+        <div class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto w-full">
+            <a class="font-display-lg text-headline-md font-bold text-on-background dark:text-on-surface uppercase tracking-tight"
+                href="#">CONSTRU</a>
+            <nav class="hidden md:flex gap-8 items-center"><a
+                    class="font-label-lg text-label-lg uppercase tracking-widest text-on-surface dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300"
+                    href="#">Inicio</a><a
+                    class="font-label-lg text-label-lg uppercase tracking-widest text-on-surface dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300"
+                    href="#">Servicios</a><a
+                    class="font-label-lg text-label-lg uppercase tracking-widest text-primary dark:text-primary-fixed font-bold hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300"
+                    href="#">Portafolio</a><a
+                    class="font-label-lg text-label-lg uppercase tracking-widest text-on-surface dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300"
+                    href="#">Nosotros</a><a
+                    class="font-label-lg text-label-lg uppercase tracking-widest text-on-surface dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300"
+                    href="#">Contacto</a></nav>
+            <button
+                class="hidden md:flex bg-primary-container text-on-primary-container px-6 py-3 font-label-lg text-label-lg uppercase font-bold active:translate-y-[1px] transition-transform duration-150">COTIZAR</button>
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-on-surface">
+                <span class="material-symbols-outlined text-[32px]">menu</span>
+            </button>
+        </div>
+    </header>
+    <!-- Page Header -->
+    <section class="py-margin-desktop px-gutter bg-surface-container-low border-b border-surface-variant">
+        <div class="max-w-container-max mx-auto text-center">
+            <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface uppercase mb-4">
+                Portafolio de Obras</h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Nuestra experiencia
+                materializada en proyectos industriales, comerciales y civiles de alta complejidad a lo largo del país.
+            </p>
+        </div>
+    </section>
+    <!-- Main Content -->
+    <main class="flex-grow py-margin-desktop px-gutter">
+        <div class="max-w-container-max mx-auto">
+            <!-- Filters -->
+            <div class="flex flex-wrap justify-center gap-4 mb-16">
+                <button
+                    class="filter-btn active border-2 border-outline text-on-surface px-8 py-3 font-label-lg text-label-lg uppercase font-bold hover:border-primary-container hover:text-primary-container transition-colors">Todos</button>
+                <button
+                    class="filter-btn border-2 border-outline text-on-surface px-8 py-3 font-label-lg text-label-lg uppercase font-bold hover:border-primary-container hover:text-primary-container transition-colors">Industrial</button>
+                <button
+                    class="filter-btn border-2 border-outline text-on-surface px-8 py-3 font-label-lg text-label-lg uppercase font-bold hover:border-primary-container hover:text-primary-container transition-colors">Comercial</button>
+                <button
+                    class="filter-btn border-2 border-outline text-on-surface px-8 py-3 font-label-lg text-label-lg uppercase font-bold hover:border-primary-container hover:text-primary-container transition-colors">Obra
+                    Civil</button>
+            </div>
+            <!-- Portfolio Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border border-surface-variant">
+                <!-- Project 1 -->
+                <article
+                    class="project-card relative group cursor-pointer overflow-hidden aspect-square border border-surface-variant bg-surface-container-highest">
+                    <div class="absolute inset-0 bg-cover bg-center grayscale mix-blend-luminosity group-hover:grayscale-0 transition-all duration-700"
+                        data-alt="A sprawling modern industrial warehouse complex at dusk, featuring massive structural steel frameworks, corrugated metal siding in dark grey, and glowing warm lighting from within the loading bays. The overall aesthetic is dark, raw, and powerful, shot with a wide-angle lens to emphasize scale in a heavy industry setting."
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCqwFGqovTkVmPLq59Q0FlHbWNys4gcd_j3-4FCGAJrm6AtkTyGGZV4TDPwmncL5bMGd-5BwRbpd7V9hjGOVTVe7dm5TzV1QZwfqXhKyQBbPT2R3C6NKj2f2MvbmUVufnBKYACQPmg_R1fHQzjNDio9QaZ62iAdGlp8PorD6WPUNxozFBaVv1-aB4bteStwVLxmvXctxmFcMMyuTZpg2hdg9HpgXL5aOIrW1WGkJb0nL-DzGEifr1Gy_3VN-cwQQAjidY2wbW3Niw')">
+                    </div>
+                    <div
+                        class="project-overlay absolute inset-0 bg-primary-container opacity-0 transition-opacity duration-300">
+                    </div>
+                    <div
+                        class="project-info absolute inset-0 flex flex-col justify-end p-8 translate-y-8 opacity-0 transition-all duration-300 text-on-primary-container">
+                        <span
+                            class="font-label-sm text-label-sm uppercase tracking-widest mb-2 opacity-80">Industrial</span>
+                        <h3 class="font-headline-md text-headline-md uppercase leading-tight mb-4">Galpón Bodega Viña
+                            Undurraga</h3>
+                        <div class="flex items-center gap-4 font-body-md text-body-md opacity-90">
+                            <span class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-[16px]">location_on</span> Viña
+                                Undurraga</span>
+                            <span class="w-1 h-1 bg-current rounded-full"></span>
+                            <span class="">2022</span>
+                        </div>
+                    </div>
+                </article>
+                <!-- Project 2 -->
+                <article
+                    class="project-card relative group cursor-pointer overflow-hidden aspect-square border border-surface-variant bg-surface-container-highest">
+                    <div class="absolute inset-0 bg-cover bg-center grayscale mix-blend-luminosity group-hover:grayscale-0 transition-all duration-700"
+                        data-alt="An expansive aerial view of a massive civil engineering project, showing a network of freshly paved concrete foundations and steel reinforcement grids for a large commercial center. Shot in dramatic high contrast black and white style, emphasizing geometric lines, grid structures, and raw construction materials."
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA4R9MbfnuLmTvIsx2tKBzCtT2oH1PBRnkZDcZiKWoiK642Me4h-NTwfYBmtCPsIHcP-3XXYijOeOVwKOBw85xxS0miPjO9BiTiSe2tUlfxRcLmRsK1MckSjI_G-OEGrwRJxQf_zYSROTLvoZOy_rXuxurlcLs0UQSEkDeF0tx2-HlQmLHgpnAs9OTWDYsD1wbAXzPpcCAQ-5-hKhCXO2lnrdAu65ylVGRbf8s6_t8b2yPZhUR5hn9-Vd15No5hVsz_PLc_U1ZhBg')">
+                    </div>
+                    <div
+                        class="project-overlay absolute inset-0 bg-primary-container opacity-0 transition-opacity duration-300">
+                    </div>
+                    <div
+                        class="project-info absolute inset-0 flex flex-col justify-end p-8 translate-y-8 opacity-0 transition-all duration-300 text-on-primary-container">
+                        <span
+                            class="font-label-sm text-label-sm uppercase tracking-widest mb-2 opacity-80">Comercial</span>
+                        <h3 class="font-headline-md text-headline-md uppercase leading-tight mb-4">Hyundai Padel Center
+                        </h3>
+                        <div class="flex items-center gap-4 font-body-md text-body-md opacity-90">
+                            <span class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-[16px]">location_on</span> Santiago</span>
+                            <span class="w-1 h-1 bg-current rounded-full"></span>
+                            <span class="">2021</span>
+                        </div>
+                    </div>
+                </article>
+                <!-- Project 3 -->
+                <article
+                    class="project-card relative group cursor-pointer overflow-hidden aspect-square border border-surface-variant bg-surface-container-highest">
+                    <div class="absolute inset-0 bg-cover bg-center grayscale mix-blend-luminosity group-hover:grayscale-0 transition-all duration-700"
+                        data-alt="Interior shot of a complex structural steel mezzanine under construction within a vast industrial facility. Sparks from welding illuminate the dark, cavernous space, highlighting the heavy I-beams and precision engineering. The mood is industrious, stark, and highly technical, dominated by deep shadows and metallic textures."
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBjIRFNHYDwRr5GD2LcmjiT8bLOWqZa9mrT3vl96hAiZYCdnmjQVVfvlo0d1x47tvLvqlLCXyJV5f6nhTqOCGgIXS0LSzDuD0mUVhz6uptcdIrCWcKuBNbCu6QshiQJBasatWgzu6U07Hh4ACP1r2R3CoqV_Rl8bbXQQQqGWKa9GzkfbU5krOBktP1YMc1xBaWHocG7_GcEbKl3GsHnTDqDDBUBnJ7mljDa5MskfJhHuBtGY05DMbg8Tc8fIWssC6UYFZ94P7Qshw')">
+                    </div>
+                    <div
+                        class="project-overlay absolute inset-0 bg-primary-container opacity-0 transition-opacity duration-300">
+                    </div>
+                    <div
+                        class="project-info absolute inset-0 flex flex-col justify-end p-8 translate-y-8 opacity-0 transition-all duration-300 text-on-primary-container">
+                        <span
+                            class="font-label-sm text-label-sm uppercase tracking-widest mb-2 opacity-80">Industrial</span>
+                        <h3 class="font-headline-md text-headline-md uppercase leading-tight mb-4">Sto Chile Galpón y
+                            Oficinas</h3>
+                        <div class="flex items-center gap-4 font-body-md text-body-md opacity-90">
+                            <span class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-[16px]">location_on</span> Lampa</span>
+                            <span class="w-1 h-1 bg-current rounded-full"></span>
+                            <span class="">2019</span>
+                        </div>
+                    </div>
+                </article>
+                <!-- Project 4 -->
+                <article
+                    class="project-card relative group cursor-pointer overflow-hidden aspect-square border border-surface-variant bg-surface-container-highest">
+                    <div class="absolute inset-0 bg-cover bg-center grayscale mix-blend-luminosity group-hover:grayscale-0 transition-all duration-700"
+                        data-alt="A sleek, modern corporate office building facade constructed with heavy steel framing, expansive glass curtain walls, and dark metal cladding. The image is taken at twilight, emphasizing the stark contrast between the warm interior lighting and the cold, imposing industrial exterior architecture. Professional, precise, and authoritative aesthetic."
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDUXe82X9nGGSuwrdGlqQqcTJdemsCUi8QdCvYeprD1_U9ALxvwGvAaUl8ktuu1ASe4Egmn_iZpe1h3m6_n2Qj2dj0Hjd3oH8UQ5bGmwseCz69CgnMEZ-IVfX-Q8CaXzaMFKIY1WFwsKwCFHE8Jf2VtIBpD1B9W_Uk-sEkiE8bEggUxjhDAVux-sYD4gcN24SdrtsmMXHGgNg3SnKOvI5hFs9xvTcbEqfBDpoIuS9x3WRWj8u5wLqFlyLjh3GJjWu-oUBSrDgK2iA')">
+                    </div>
+                    <div
+                        class="project-overlay absolute inset-0 bg-primary-container opacity-0 transition-opacity duration-300">
+                    </div>
+                    <div
+                        class="project-info absolute inset-0 flex flex-col justify-end p-8 translate-y-8 opacity-0 transition-all duration-300 text-on-primary-container">
+                        <span
+                            class="font-label-sm text-label-sm uppercase tracking-widest mb-2 opacity-80">Comercial</span>
+                        <h3 class="font-headline-md text-headline-md uppercase leading-tight mb-4">Oficinas y Centro
+                            Distribución Kori Wasi</h3>
+                        <div class="flex items-center gap-4 font-body-md text-body-md opacity-90">
+                            <span class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-[16px]">location_on</span> Quilicura</span>
+                            <span class="w-1 h-1 bg-current rounded-full"></span>
+                            <span class="">2013</span>
+                        </div>
+                    </div>
+                </article>
+                <!-- Project 5 -->
+                <article
+                    class="project-card relative group cursor-pointer overflow-hidden aspect-square border border-surface-variant bg-surface-container-highest">
+                    <div class="absolute inset-0 bg-cover bg-center grayscale mix-blend-luminosity group-hover:grayscale-0 transition-all duration-700"
+                        data-alt="A stark, minimalist view of a massive cold storage facility (Frigorífico) exterior. The structure is an immense, windowless rectangular volume clad in pristine, ribbed metallic panels, sitting on a vast, perfectly flat concrete apron. High contrast lighting accentuates the monumental scale and industrial severity of the building."
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuADKA6LUYysfnVv7Ocu19YmC3_1bs-VgpGZOptAsVL--GXt-DePtv9k3JPQsj2QN_dLXQWAwqdTgtKhaNy5XaLmP-N3Vq6VpUXLsmbCeIvotSFa6CZHXNJ-ni5jPBWDHJfOlP_Cl6ja0UN01fHTjkK1dmg7CP8_HcsggPg_erJRb44iN5Kpx-dvJcZs7gsi66PSF8LDyIW0tdLWAOorXs2K3XIkIjeCqOIVn1MKRLUSedIR0iYrt60bVLJ7a8571FKi2WBQz9CseA')">
+                    </div>
+                    <div
+                        class="project-overlay absolute inset-0 bg-primary-container opacity-0 transition-opacity duration-300">
+                    </div>
+                    <div
+                        class="project-info absolute inset-0 flex flex-col justify-end p-8 translate-y-8 opacity-0 transition-all duration-300 text-on-primary-container">
+                        <span
+                            class="font-label-sm text-label-sm uppercase tracking-widest mb-2 opacity-80">Industrial</span>
+                        <h3 class="font-headline-md text-headline-md uppercase leading-tight mb-4">Frigorífico Preferred
+                            Freezer</h3>
+                        <div class="flex items-center gap-4 font-body-md text-body-md opacity-90">
+                            <span class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-[16px]">location_on</span> San Bernardo</span>
+                            <span class="w-1 h-1 bg-current rounded-full"></span>
+                            <span class="">2008</span>
+                        </div>
+                    </div>
+                </article>
+                <!-- Call to Action Tile -->
+                <div
+                    class="aspect-square bg-surface-container-highest border border-surface-variant flex flex-col items-center justify-center p-8 text-center">
+                    <h3 class="font-headline-lg text-headline-lg uppercase text-on-surface mb-6">¿Listo para construir?
+                    </h3>
+                    <button
+                        class="bg-primary-container text-on-primary-container px-8 py-4 font-label-lg text-label-lg uppercase font-bold hover:bg-primary-fixed transition-colors active:translate-y-[1px]">Cotizar
+                        Proyecto</button>
+                </div>
+            </div>
+            <div class="mt-16 text-center">
+                <button
+                    class="border-2 border-outline text-on-surface px-8 py-4 font-label-lg text-label-lg uppercase font-bold hover:bg-surface-variant transition-colors inline-flex items-center gap-2">
+                    Cargar Más Proyectos
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer
+        class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t-4 border-primary dark:border-primary-fixed mt-auto">
+        <div class="w-full py-16 px-gutter grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max mx-auto">
+            <div class="col-span-1 md:col-span-1">
+                <a class="font-display-lg text-headline-lg font-bold text-primary dark:text-primary-fixed uppercase block mb-6"
+                    href="#">CONSTRU</a>
+                <p class="font-body-md text-body-md text-on-surface-variant">© 2024 CONSTRU. ALL RIGHTS RESERVED.
+                    RELIABILITY BUILT IN STEEL.</p>
+            </div>
+            <div class="col-span-1 md:col-span-1">
+                <h4 class="font-label-lg text-label-lg uppercase text-on-surface font-bold mb-6">Servicios</h4>
+                <ul class="space-y-4">
+                    <li class=""><a
+                            class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200 block"
+                            href="#">Galpones Industriales</a></li>
+                    <li class=""><a
+                            class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200 block"
+                            href="#">Obras Civiles</a></li>
+                    <li class=""><a
+                            class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200 block"
+                            href="#">Urbanizaciones</a></li>
+                </ul>
+            </div>
+            <div class="col-span-1 md:col-span-1">
+                <h4
+                    class="font-label-lg text-label-lg uppercase text-on-surface font-bold mb-6 opacity-0 hidden md:block">
+                    Más Servicios</h4>
+                <ul class="space-y-4">
+                    <li class=""><a
+                            class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200 block"
+                            href="#">Edificios Corporativos</a></li>
+                    <li class=""><a
+                            class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200 block"
+                            href="#">Altillos Estructurales</a></li>
+                    <li class=""><a
+                            class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200 block"
+                            href="#">Nosotros</a></li>
+                </ul>
+            </div>
+            <div class="col-span-1 md:col-span-1">
+                <h4 class="font-label-lg text-label-lg uppercase text-on-surface font-bold mb-6">Contacto</h4>
+                <ul class="space-y-4">
+                    <li class="font-body-md text-body-md text-on-surface-variant flex items-start gap-2">
+                        <span class="material-symbols-outlined text-[20px] text-primary">location_on</span>
+                        Av. Estructura 1234, Ciudad Industrial
+                    </li>
+                    <li class="font-body-md text-body-md text-on-surface-variant flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[20px] text-primary">mail</span>
+                        contacto@constru.com
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+</body>
+
+</html>

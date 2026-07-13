@@ -1,0 +1,161 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+---
+
+<Layout title="Nosotros — CONSTRU" description="Conoce la misión, visión, valores y equipo de CONSTRU. Ingeniería y construcción industrial de alto nivel en Chile.">
+  <!-- Hero Section -->
+  <section class="relative w-full h-[614px] min-h-[500px] flex items-center justify-center">
+    <div class="absolute inset-0 z-0 bg-surface">
+      <div class="absolute inset-0 bg-cover bg-center opacity-40"
+        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDQTPJBU4trzX6igBHLBq7JtH1g6MxHu7Nq1nCg3wxDPjpvDUNuNtnJU-ZwjqRMsepdDfLAGFJSPhfplPUm8gZks_gdWup3PEw77bH4UBuKMtR31Bo-MNddUq7oYzOoyABeDRU7nWqNM8U0V9hOrNYy4w64bd_vYGUJLul_JJgtjZfyfb4FQZquvSFqiwYxf1_wUpvNmR1XECYJ19l85OMS3C96kpNW8ADK0nOI8N76VYbMQt1QEXgsszGZOh79IvVs1Y9XH55oHw')">
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-b from-surface/20 to-surface"></div>
+    </div>
+    <div class="relative z-10 w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center flex flex-col items-center">
+      <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-white uppercase mx-auto max-w-4xl border-b-4 border-primary-container inline-block pb-4">
+        NOSOTROS
+      </h1>
+      <p class="font-headline-lg text-headline-lg text-on-surface-variant mt-6 uppercase">
+        Construyendo el futuro industrial
+      </p>
+    </div>
+  </section>
+
+  <!-- Mission / Vision - Asymmetric Bento -->
+  <section class="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+      <!-- Left Block: Mission -->
+      <div class="bg-surface-container-high p-8 md:p-12 flex flex-col justify-start h-full relative group">
+        <div class="absolute top-0 left-0 w-full h-1 bg-primary-container origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+        <h2 class="font-headline-lg text-headline-lg text-primary-container uppercase mb-6">Nuestra Misión</h2>
+        <p class="font-body-lg text-body-lg text-on-surface-variant mb-6">
+          Forjar la infraestructura del mañana con acero, precisión y un compromiso inquebrantable con la
+          fiabilidad. En Constru, no solo erigimos estructuras; diseñamos la columna vertebral del sector
+          industrial moderno.
+        </p>
+        <p class="font-body-md text-body-md text-on-surface-variant">
+          Nos especializamos en proyectos de alta complejidad estructural, asegurando que cada viga y cada
+          soldadura cumpla con los estándares más rigurosos de ingeniería a nivel global.
+        </p>
+      </div>
+      <!-- Right Block: Vision -->
+      <div class="bg-surface-container-high p-8 md:p-12 flex flex-col justify-start h-full relative group">
+        <div class="absolute top-0 left-0 w-full h-1 bg-primary-container origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+        <h3 class="font-headline-lg text-headline-lg text-primary-container uppercase mb-6">Visión</h3>
+        <p class="font-body-lg text-body-lg text-on-surface-variant">
+          Ser el referente definitivo en ingeniería estructural pesada, liderando la transición hacia
+          construcciones industriales más eficientes y resilientes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="py-24 bg-surface-container-lowest">
+    <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="font-headline-xl text-headline-xl text-white uppercase inline-block border-b-2 border-primary-container pb-2">
+          Valores Fundamentales
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+        <!-- Value 1 -->
+        <div class="bg-surface-container p-8 border border-surface-container-highest hover:border-primary-container/50 transition-colors duration-300">
+          <span class="material-symbols-outlined text-4xl text-primary-container mb-4">verified_user</span>
+          <h3 class="font-headline-md text-headline-md text-white uppercase mb-4">Seguridad Total</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant">Protegemos a nuestro equipo y a los
+            entornos donde operamos. Cero compromisos, cero accidentes.</p>
+        </div>
+        <!-- Value 2 -->
+        <div class="bg-surface-container p-8 border border-surface-container-highest hover:border-primary-container/50 transition-colors duration-300">
+          <span class="material-symbols-outlined text-4xl text-primary-container mb-4">workspace_premium</span>
+          <h3 class="font-headline-md text-headline-md text-white uppercase mb-4">Calidad Férrea</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant">Materiales certificados y procesos
+            auditados para garantizar la integridad estructural de cada obra.</p>
+        </div>
+        <!-- Value 3 -->
+        <div class="bg-surface-container p-8 border border-surface-container-highest hover:border-primary-container/50 transition-colors duration-300">
+          <span class="material-symbols-outlined text-4xl text-primary-container mb-4">handshake</span>
+          <h3 class="font-headline-md text-headline-md text-white uppercase mb-4">Compromiso Absoluto</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant">Entregas en tiempo y forma.
+            Asumimos la responsabilidad de cada fase del desarrollo del proyecto.</p>
+        </div>
+        <!-- Value 4 -->
+        <div class="bg-surface-container p-8 border border-surface-container-highest hover:border-primary-container/50 transition-colors duration-300">
+          <span class="material-symbols-outlined text-4xl text-primary-container mb-4">lightbulb</span>
+          <h3 class="font-headline-md text-headline-md text-white uppercase mb-4">Innovación Técnica</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant">Implementación de tecnologías de
+            modelado y construcción de última generación para optimizar resultados.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="py-24 bg-surface px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="font-headline-xl text-headline-xl text-white uppercase inline-block border-b-2 border-primary-container pb-2">
+        Nuestro Equipo
+      </h2>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+      <!-- Card 1 -->
+      <div class="bg-surface-container-high border border-surface-container-highest group">
+        <div class="h-64 bg-surface-container-highest w-full overflow-hidden">
+          <div class="w-full h-full bg-surface-variant flex items-center justify-center">
+            <span class="material-symbols-outlined text-6xl text-on-surface-variant opacity-50">person</span>
+          </div>
+        </div>
+        <div class="p-6 border-t-2 border-transparent group-hover:border-primary-container transition-colors">
+          <h3 class="font-headline-md text-headline-md text-white uppercase mb-1">Carlos Mendoza</h3>
+          <p class="font-label-lg text-label-lg text-primary-container uppercase mb-3">Director de Ingeniería</p>
+          <p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Experto en cálculo
+            estructural y diseño de estructuras metálicas de gran escala.</p>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="bg-surface-container-high border border-surface-container-highest group">
+        <div class="h-64 bg-surface-container-highest w-full overflow-hidden">
+          <div class="w-full h-full bg-surface-variant flex items-center justify-center">
+            <span class="material-symbols-outlined text-6xl text-on-surface-variant opacity-50">person</span>
+          </div>
+        </div>
+        <div class="p-6 border-t-2 border-transparent group-hover:border-primary-container transition-colors">
+          <h3 class="font-headline-md text-headline-md text-white uppercase mb-1">Laura Silva</h3>
+          <p class="font-label-lg text-label-lg text-primary-container uppercase mb-3">Gerente de Proyectos</p>
+          <p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Coordinación integral
+            de obras industriales con enfoque en seguridad y tiempos.</p>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="bg-surface-container-high border border-surface-container-highest group">
+        <div class="h-64 bg-surface-container-highest w-full overflow-hidden">
+          <div class="w-full h-full bg-surface-variant flex items-center justify-center">
+            <span class="material-symbols-outlined text-6xl text-on-surface-variant opacity-50">person</span>
+          </div>
+        </div>
+        <div class="p-6 border-t-2 border-transparent group-hover:border-primary-container transition-colors">
+          <h3 class="font-headline-md text-headline-md text-white uppercase mb-1">Roberto Gómez</h3>
+          <p class="font-label-lg text-label-lg text-primary-container uppercase mb-3">Jefe de Operaciones</p>
+          <p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Supervisión en sitio y
+            control de calidad de materiales y soldaduras críticas.</p>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="bg-surface-container-high border border-surface-container-highest group">
+        <div class="h-64 bg-surface-container-highest w-full overflow-hidden">
+          <div class="w-full h-full bg-surface-variant flex items-center justify-center">
+            <span class="material-symbols-outlined text-6xl text-on-surface-variant opacity-50">person</span>
+          </div>
+        </div>
+        <div class="p-6 border-t-2 border-transparent group-hover:border-primary-container transition-colors">
+          <h3 class="font-headline-md text-headline-md text-white uppercase mb-1">Ana Martínez</h3>
+          <p class="font-label-lg text-label-lg text-primary-container uppercase mb-3">Innovación y Modelado</p>
+          <p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Especialista en BIM y
+            tecnologías aplicadas a la eficiencia constructiva.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

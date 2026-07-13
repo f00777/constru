@@ -1,0 +1,104 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { label: "Inicio", href: "/" },
+  { label: "Servicios", href: "/servicios" },
+  { label: "Portafolio", href: "/portafolio" },
+  { label: "Nosotros", href: "/nosotros" },
+  { label: "Contacto", href: "/contacto" },
+];
+---
+
+<nav
+  class="fixed top-0 w-full z-50 bg-background/90 border-b border-primary-fixed backdrop-blur-md"
+  id="main-nav"
+>
+  <div class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
+    <a
+      class="font-display-lg text-headline-md font-bold text-on-surface uppercase tracking-tight"
+      href="/"
+      id="nav-logo"
+    >
+      CONSTRU
+    </a>
+
+    <!-- Desktop Links -->
+    <div class="hidden md:flex gap-8 items-center" id="nav-desktop-links">
+      {navLinks.map((link) => (
+        <a
+          class:list={[
+            "font-label-lg text-label-lg uppercase tracking-widest transition-colors duration-300",
+            currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href))
+              ? "text-primary-fixed font-bold"
+              : "text-on-surface-variant hover:text-primary-fixed",
+          ]}
+          href={link.href}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+
+    <!-- CTA Button (Desktop) -->
+    <a
+      href="/contacto"
+      class="hidden md:flex bg-primary-container text-on-primary-container px-6 py-3 font-label-lg text-label-lg uppercase font-bold tracking-widest hover:bg-primary transition-colors active:translate-y-[1px] duration-150"
+      id="nav-cta"
+    >
+      COTIZAR
+    </a>
+
+    <!-- Hamburger Button (Mobile) -->
+    <button class="md:hidden text-primary cursor-pointer" id="nav-mobile-toggle" aria-label="Abrir menú">
+      <span class="material-symbols-outlined text-headline-md" id="nav-hamburger-icon">menu</span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    class="md:hidden overflow-hidden transition-all duration-300 max-h-0 bg-background/95 backdrop-blur-md border-t border-surface-container-highest"
+    id="nav-mobile-menu"
+  >
+    <div class="flex flex-col gap-4 px-gutter py-6">
+      {navLinks.map((link) => (
+        <a
+          class:list={[
+            "font-label-lg text-label-lg uppercase tracking-widest transition-colors duration-300 py-2",
+            currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href))
+              ? "text-primary-fixed font-bold"
+              : "text-on-surface-variant hover:text-primary-fixed",
+          ]}
+          href={link.href}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="/contacto"
+        class="bg-primary-container text-on-primary-container px-6 py-3 font-label-lg text-label-lg uppercase font-bold tracking-widest text-center hover:bg-primary transition-colors active:translate-y-[1px] duration-150 mt-2"
+      >
+        COTIZAR
+      </a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const toggle = document.getElementById("nav-mobile-toggle");
+  const menu = document.getElementById("nav-mobile-menu");
+  const icon = document.getElementById("nav-hamburger-icon");
+
+  if (toggle && menu && icon) {
+    toggle.addEventListener("click", () => {
+      const isOpen = menu.style.maxHeight && menu.style.maxHeight !== "0px";
+      if (isOpen) {
+        menu.style.maxHeight = "0px";
+        icon.textContent = "menu";
+      } else {
+        menu.style.maxHeight = menu.scrollHeight + "px";
+        icon.textContent = "close";
+      }
+    });
+  }
+</script>

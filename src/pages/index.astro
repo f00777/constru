@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
 ---
 
 <Layout>
@@ -8,7 +7,7 @@ import { Image } from 'astro:assets';
   <header class="relative min-h-[90vh] flex items-center pt-24 pb-20">
     <div class="absolute inset-0 z-0">
       <div class="absolute inset-0 bg-background/80 mix-blend-multiply z-10"></div>
-      <Image alt="Hero background" class="w-full h-full object-cover" inferSize={true} loading="eager" fetchpriority="high"
+      <img alt="Hero background" class="w-full h-full object-cover" loading="eager" fetchpriority="high"
         src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9nC7sDpHvGVP--_pnk-V_onbYwnofYysK9YwdXVf4nprs3P4HhaR00wZH2lbimqKPsiA0pdZXjWLjNw5LAfiNle941Du-KFD61NTa4ZAZ44zaqN0MSYeIQ9fuCNu60TlYbkFNHjKhhbH2suZmDCIBzHRrIf6Ox3fUuTnck9ewjZKfNvzmTCbTLUMuv8kNCsAjKinuHGZ6g4ejYY1NyhianfKn9Ns2uGkCg7ndIdxN3nBJWUPmNLJeNnSUr6keCeJvmy17UF-8OA" />
     </div>
     <div class="relative z-10 w-full max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-12 gap-gutter">

@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  web-constructora:
+    build: .
+    container_name: constructora-astro
+    restart: always
+    ports:
+      - "4321:80" # Mapea el puerto 4321 de tu servidor al 80 interno de Nginx
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

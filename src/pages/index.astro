@@ -1,5 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getInicioContent, getMediaUrl } from '../lib/payload';
+
+const isPreview = Astro.url.searchParams.get('preview') === 'true';
+const cmsData = await getInicioContent(isPreview);
+
+const tagline = cmsData?.heroTagline || "Proyectos Industriales · Estructuras Metálicas · Diseño";
+const title = cmsData?.heroTitle || "INGENIERÍA Y CONSTRUCCIÓN DE ALTO NIVEL";
+const subtitle = cmsData?.heroSubtitle || "Diseño y construcción integrados bajo una sola dirección. Del proyecto al llaves en mano, con control total de calidad y plazos.";
+const heroImgUrl = getMediaUrl(cmsData?.heroImage, "https://lh3.googleusercontent.com/aida-public/AB6AXuB9nC7sDpHvGVP--_pnk-V_onbYwnofYysK9YwdXVf4nprs3P4HhaR00wZH2lbimqKPsiA0pdZXjWLjNw5LAfiNle941Du-KFD61NTa4ZAZ44zaqN0MSYeIQ9fuCNu60TlYbkFNHjKhhbH2suZmDCIBzHRrIf6Ox3fUuTnck9ewjZKfNvzmTCbTLUMuv8kNCsAjKinuHGZ6g4ejYY1NyhianfKn9Ns2uGkCg7ndIdxN3nBJWUPmNLJeNnSUr6keCeJvmy17UF-8OA");
+const ctaText = cmsData?.heroCtaText || "Cotizar Proyecto";
+const ctaLink = cmsData?.heroCtaLink || "/contacto";
+const secondaryCtaText = cmsData?.heroSecondaryCtaText || "Ver Portafolio";
+const secondaryCtaLink = cmsData?.heroSecondaryCtaLink || "/portafolio";
+
+const stats = cmsData?.stats && cmsData.stats.length > 0 ? cmsData.stats : [
+  { number: "+20", label: "Años de Experiencia" },
+  { number: "+100", label: "Obras Ejecutadas" },
+  { number: "+200.000", label: "M² Construidos" },
+  { number: "CHILE", label: "Cobertura Nacional" }
+];
 ---
 
 <Layout>
@@ -7,31 +27,28 @@ import Layout from '../layouts/Layout.astro';
   <header class="relative min-h-[90vh] flex items-center pt-24 pb-20">
     <div class="absolute inset-0 z-0">
       <div class="absolute inset-0 bg-background/80 mix-blend-multiply z-10"></div>
-      <img alt="Hero background" class="w-full h-full object-cover" loading="eager" fetchpriority="high"
-        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9nC7sDpHvGVP--_pnk-V_onbYwnofYysK9YwdXVf4nprs3P4HhaR00wZH2lbimqKPsiA0pdZXjWLjNw5LAfiNle941Du-KFD61NTa4ZAZ44zaqN0MSYeIQ9fuCNu60TlYbkFNHjKhhbH2suZmDCIBzHRrIf6Ox3fUuTnck9ewjZKfNvzmTCbTLUMuv8kNCsAjKinuHGZ6g4ejYY1NyhianfKn9Ns2uGkCg7ndIdxN3nBJWUPmNLJeNnSUr6keCeJvmy17UF-8OA" />
+      <img id="cms-hero-image" alt="Hero background" class="w-full h-full object-cover" loading="eager" fetchpriority="high"
+        src={heroImgUrl} />
     </div>
     <div class="relative z-10 w-full max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-12 gap-gutter">
       <div class="md:col-span-8 flex flex-col items-start gap-6">
-        <p class="text-primary font-label-lg text-label-lg tracking-widest uppercase border-l-2 border-primary pl-4">
-          Proyectos Industriales · Estructuras Metálicas · Diseño
+        <p id="cms-hero-tagline" class="text-primary font-label-lg text-label-lg tracking-widest uppercase border-l-2 border-primary pl-4">
+          {tagline}
         </p>
-        <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg uppercase text-on-background">
-          INGENIERÍA Y<br />
-          <span class="text-primary-container">CONSTRUCCIÓN</span><br />
-          DE ALTO NIVEL
+        <h1 id="cms-hero-title" class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg uppercase text-on-background">
+          {title}
         </h1>
-        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mt-4">
-          Diseño y construcción integrados bajo una sola dirección. Del proyecto al llaves en mano, con
-          control total de calidad y plazos.
+        <p id="cms-hero-subtitle" class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mt-4">
+          {subtitle}
         </p>
         <div class="flex flex-col sm:flex-row gap-4 mt-8">
-          <a href="/contacto"
+          <a id="cms-hero-cta" href={ctaLink}
             class="bg-primary-container text-on-primary-container px-8 py-4 font-label-lg text-label-lg uppercase font-bold tracking-widest hover:bg-primary transition-colors active:translate-y-[1px]">
-            Cotizar Proyecto
+            {ctaText}
           </a>
-          <a href="/portafolio"
+          <a id="cms-hero-secondary-cta" href={secondaryCtaLink}
             class="border-2 border-on-background text-on-background px-8 py-4 font-label-lg text-label-lg uppercase font-bold tracking-widest hover:bg-on-background hover:text-background transition-colors active:translate-y-[1px]">
-            Ver Portafolio
+            {secondaryCtaText}
           </a>
         </div>
       </div>
@@ -41,26 +58,100 @@ import Layout from '../layouts/Layout.astro';
   <!-- Stats Section -->
   <section class="bg-surface-container-lowest py-16 border-y border-surface-container-highest relative z-20">
     <div class="max-w-container-max mx-auto px-gutter">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-gutter divide-x divide-surface-container-highest">
-        <div class="flex flex-col items-center justify-center text-center p-4">
-          <span class="font-headline-xl text-headline-xl text-primary-container mb-2">+20</span>
-          <span class="font-label-lg text-label-lg uppercase tracking-widest text-on-surface-variant">Años de<br />Experiencia</span>
-        </div>
-        <div class="flex flex-col items-center justify-center text-center p-4">
-          <span class="font-headline-xl text-headline-xl text-primary-container mb-2">+100</span>
-          <span class="font-label-lg text-label-lg uppercase tracking-widest text-on-surface-variant">Obras<br />Ejecutadas</span>
-        </div>
-        <div class="flex flex-col items-center justify-center text-center p-4">
-          <span class="font-headline-xl text-headline-xl text-primary-container mb-2">+200.000</span>
-          <span class="font-label-lg text-label-lg uppercase tracking-widest text-on-surface-variant">M² Construidos</span>
-        </div>
-        <div class="flex flex-col items-center justify-center text-center p-4">
-          <span class="font-headline-xl text-headline-xl text-primary-container mb-2">CHILE</span>
-          <span class="font-label-lg text-label-lg uppercase tracking-widest text-on-surface-variant">Cobertura<br />Nacional</span>
-        </div>
+      <div id="cms-stats-container" class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-gutter divide-x divide-surface-container-highest">
+        {stats.map((stat) => (
+          <div class="flex flex-col items-center justify-center text-center p-4">
+            <span class="font-headline-xl text-headline-xl text-primary-container mb-2">{stat.number}</span>
+            <span class="font-label-lg text-label-lg uppercase tracking-widest text-on-surface-variant">{stat.label}</span>
+          </div>
+        ))}
       </div>
     </div>
   </section>
+
+  <!-- Script Listener de Live Preview por postMessage -->
+  <script>
+    const payloadUrl = (import.meta as any).env?.PUBLIC_PAYLOAD_URL || 'http://localhost:3000';
+
+    // 1. Enviar señal de disponibilidad (ready) al panel de administración de Payload
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({ type: 'payload-live-preview-ready' }, '*');
+    }
+
+    // 2. Escuchar todos los mensajes de postMessage de Payload CMS en tiempo real
+    window.addEventListener('message', (event) => {
+      let rawData = event.data;
+      if (typeof rawData === 'string') {
+        try { rawData = JSON.parse(rawData); } catch (e) {}
+      }
+      if (!rawData) return;
+
+      // Extraer datos del evento de Payload v3 (compatibilidad con diferentes formatos de evento)
+      const data = rawData.data || rawData.doc || rawData.document || (rawData.type === 'payload-live-preview' ? rawData : null);
+      
+      // Si el evento indica guardar borrador o publicar, forzar recarga ligera del iframe si es necesario
+      if (rawData.type === 'payload-live-preview-save' || rawData.action === 'save') {
+        window.location.reload();
+        return;
+      }
+
+      if (!data || typeof data !== 'object') return;
+
+      // Actualizar textos en tiempo real (mientras escribes)
+      if (data.heroTagline !== undefined) {
+        const el = document.getElementById('cms-hero-tagline');
+        if (el) el.textContent = data.heroTagline;
+      }
+      if (data.heroTitle !== undefined) {
+        const el = document.getElementById('cms-hero-title');
+        if (el) el.textContent = data.heroTitle;
+      }
+      if (data.heroSubtitle !== undefined) {
+        const el = document.getElementById('cms-hero-subtitle');
+        if (el) el.textContent = data.heroSubtitle;
+      }
+      if (data.heroCtaText !== undefined) {
+        const el = document.getElementById('cms-hero-cta');
+        if (el) el.textContent = data.heroCtaText;
+      }
+      if (data.heroCtaLink !== undefined) {
+        const el = document.getElementById('cms-hero-cta') as HTMLAnchorElement | null;
+        if (el) el.href = data.heroCtaLink;
+      }
+      if (data.heroSecondaryCtaText !== undefined) {
+        const el = document.getElementById('cms-hero-secondary-cta');
+        if (el) el.textContent = data.heroSecondaryCtaText;
+      }
+      if (data.heroSecondaryCtaLink !== undefined) {
+        const el = document.getElementById('cms-hero-secondary-cta') as HTMLAnchorElement | null;
+        if (el) el.href = data.heroSecondaryCtaLink;
+      }
+
+      // Actualizar imagen en tiempo real
+      if (data.heroImage) {
+        const el = document.getElementById('cms-hero-image') as HTMLImageElement | null;
+        if (el) {
+          const imgUrl = typeof data.heroImage === 'string' ? data.heroImage : data.heroImage.url;
+          if (imgUrl) {
+            el.src = imgUrl.startsWith('http') ? imgUrl : `${payloadUrl}${imgUrl}`;
+          }
+        }
+      }
+
+      // Actualizar array de estadísticas en tiempo real
+      if (Array.isArray(data.stats)) {
+        const container = document.getElementById('cms-stats-container');
+        if (container) {
+          container.innerHTML = data.stats.map((stat: any) => `
+            <div class="flex flex-col items-center justify-center text-center p-4">
+              <span class="font-headline-xl text-headline-xl text-primary-container mb-2">${stat.number || ''}</span>
+              <span class="font-label-lg text-label-lg uppercase tracking-widest text-on-surface-variant">${stat.label || ''}</span>
+            </div>
+          `).join('');
+        }
+      }
+    });
+  </script>
 
   <!-- Specialties Grid -->
   <section class="w-full bg-surface">

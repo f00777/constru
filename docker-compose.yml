@@ -6,7 +6,31 @@ services:
     container_name: constructora-astro
     restart: always
     ports:
-      - "4321:80" # Mapea el puerto 4321 de tu servidor al 80 interno de Nginx
+      - "4321:80" # Único puerto público (Frontend Astro + Proxy a Payload /admin y /api)
+    depends_on:
+      - cms
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  cms:
+    build:
+      context: ./cms
+      dockerfile: Dockerfile
+    container_name: constructora-cms
+    restart: always
+    expose:
+      - "3000" # Accesible internamente por Nginx en el puerto 3000
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+      - DATABASE_URL=file:./cms.db
+      - PAYLOAD_SECRET=${PAYLOAD_SECRET:-b3c7792e70042a18575e3960}
+    volumes:
+      - ./cms/cms.db:/app/cms.db
+      - ./cms/public/media:/app/public/media
     logging:
       driver: "json-file"
       options:
